@@ -1,5 +1,3 @@
-import 'package:uuid/uuid.dart';
-
 class Note {
   Note({
     String? id,
@@ -9,7 +7,7 @@ class Note {
     required this.dateCreated,
     required this.dateModified,
     required this.tags,
-  }) : id = id ?? const Uuid().v4();
+  }) : id = id ?? DateTime.now().millisecondsSinceEpoch.toString();
 
   final String id;
   final String? title;
@@ -19,23 +17,25 @@ class Note {
   final int dateModified;
   final List<String>? tags;
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
     'id': id,
-    'title': title,
-    'content': content,
+    'title': title ?? '',
+    'content': content ?? '',
     'contentJson': contentJson,
     'dateCreated': dateCreated,
     'dateModified': dateModified,
-    'tags': tags ?? [],
+    'tags': (tags ?? []).join('||'),
   };
 
-  factory Note.fromJson(Map<String, dynamic> json) => Note(
-    id: json['id'],
-    title: json['title'],
-    content: json['content'],
-    contentJson: json['contentJson'],
-    dateCreated: json['dateCreated'],
-    dateModified: json['dateModified'],
-    tags: List<String>.from(json['tags'] ?? []),
+  factory Note.fromMap(Map<String, dynamic> map) => Note(
+    id: map['id'],
+    title: map['title'],
+    content: map['content'],
+    contentJson: map['contentJson'],
+    dateCreated: map['dateCreated'],
+    dateModified: map['dateModified'],
+    tags: (map['tags'] as String).isEmpty
+        ? []
+        : (map['tags'] as String).split('||'),
   );
 }
