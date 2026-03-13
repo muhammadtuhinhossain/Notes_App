@@ -173,6 +173,7 @@ class _NewOrEditNotePageState extends State<NewOrEditNotePage> {
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               decoration: const InputDecoration(
                 hintText: 'Title here',
+                hintStyle: TextStyle(color: Color(0xFFBDBDBD)),
                 border: InputBorder.none,
               ),
               controller: titleController,
