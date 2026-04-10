@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// No Notes==============
 class NoNotes extends StatelessWidget {
   const NoNotes({
     super.key,

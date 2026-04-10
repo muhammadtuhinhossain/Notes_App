@@ -24,9 +24,6 @@ class NoteFab extends StatelessWidget {
         foregroundColor: Colors.white,
         shape:RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          // side: BorderSide(
-          //   color: Colors.black,
-          // ),
         ),
 
       ),
